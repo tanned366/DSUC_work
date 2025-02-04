@@ -2,8 +2,9 @@
 
 void trav(int arr[], int n) {
     printf("Array: ");
-    for (int i = 0; i < n; i++)
+    for (int i = 0; i < n; i++){
         printf("%d ", arr[i]);
+    }
     printf("\n");
 }
 
