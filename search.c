@@ -23,6 +23,35 @@ int bin_rec(int arr[], int start, int end, int item) {
     return -1;
 }
 
+void bubblesort(int arr[], int n) {
+    for(int i=0; i<n; i++) {
+        for(int j=0; j<n-i-1; j++) {
+            if(arr[j] > arr[j+1]) {
+                int temp = arr[j];
+                arr[j] = arr[j+1];
+                arr[j+1] = temp;
+            }
+        }
+    }
+}
+
+void selectionsort(int arr[], int n) {
+    for(int i=0; i<n-1; i++) {
+        int minIndex = i;
+
+        for(int j=0; j<n; j++){
+            if(arr[j]<arr[minIndex]) 
+                minIndex = j;
+
+            int temp = arr[i];
+            arr[i] = arr[minIndex];
+            arr[minIndex] = arr[i];
+        }
+    }
+}
+
+`
+
 int main() {
     int arr[] = {10, 20, 30, 40, 50, 60, 70};
     int n = sizeof(arr)/sizeof(int);
