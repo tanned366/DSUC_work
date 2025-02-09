@@ -50,15 +50,38 @@ void selectionsort(int arr[], int n) {
     }
 }
 
-`
+void merge(int arr[], int temp[], int left, int mid, int right) {
+    int i = left, j = mid + 1, k = left;
+
+    while (i <= mid && j <= right) {
+        if (arr[i] <= arr[j]) temp[k++] = arr[i++];
+        else temp[k++] = arr[j++];
+    }
+    
+    while (i <= mid) temp[k++] = arr[i++];
+    
+    while (j <= right) temp[k++] = arr[j++];
+
+    for (i = left; i <= right; i++) arr[i] = temp[i];
+}
+
+void mergesort(int arr[], int temp[], int left, int right) {
+    if (left < right) {
+        int mid = left + (right - left) / 2;
+        mergesort(arr, temp, left, mid);
+        mergesort(arr, temp, mid + 1, right);
+        merge(arr, temp, left, mid, right);
+    }
+}
 
 int main() {
     int arr[] = {10, 20, 30, 40, 50, 60, 70};
     int n = sizeof(arr)/sizeof(int);
     int item = 70;
 
+
     // printf("%d", lin_rec_lower(arr, 0, n, item));
-    printf("%d", bin_rec(arr, 0, n-1, item));
+    // printf("%d", bin_rec(arr, 0, n-1, item));
     
     return 0;
 }
