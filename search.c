@@ -23,13 +23,17 @@ int bin_rec(int arr[], int start, int end, int item) {
     return -1;
 }
 
+void swap(int *a, int *b) {
+    int temp = *a;
+    *a = *b;
+    *b = temp;
+}
+
 void bubblesort(int arr[], int n) {
     for(int i=0; i<n; i++) {
         for(int j=0; j<n-i-1; j++) {
             if(arr[j] > arr[j+1]) {
-                int temp = arr[j];
-                arr[j] = arr[j+1];
-                arr[j+1] = temp;
+                swap(&arr[j], &arr[j+1]);
             }
         }
     }
@@ -40,12 +44,9 @@ void selectionsort(int arr[], int n) {
         int minIndex = i;
 
         for(int j=0; j<n; j++){
-            if(arr[j]<arr[minIndex]) 
-                minIndex = j;
+            if(arr[j]<arr[minIndex])  minIndex = j;
 
-            int temp = arr[i];
-            arr[i] = arr[minIndex];
-            arr[minIndex] = arr[i];
+            swap(&arr[minIndex], &arr[i]);
         }
     }
 }
@@ -73,6 +74,8 @@ void mergesort(int arr[], int temp[], int left, int right) {
         merge(arr, temp, left, mid, right);
     }
 }
+
+
 
 int main() {
     int arr[] = {10, 20, 30, 40, 50, 60, 70};
