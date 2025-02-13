@@ -38,3 +38,18 @@ int main() {
 
     return 0;
 }
+
+/* 1. Create an empty stack for operators.
+2. Create an empty list for the output (postfix expression).
+3. For each token in the infix expression:
+   a. If the token is an operand, add it to the output.
+   b. If the token is '(', push it onto the stack.
+   c. If the token is an operator:
+      - While the stack is not empty and the top of the stack has an operator with greater or equal precedence:
+         - Pop the operator from the stack and add it to the output.
+      - Push the current operator onto the stack.
+   d. If the token is ')':
+      - Pop from the stack to the output until '(' is found.
+      - Pop and discard '('.
+4. After reading the expression, pop all remaining operators from the stack and add them to the output.
+5. The output list contains the postfix expression. */
