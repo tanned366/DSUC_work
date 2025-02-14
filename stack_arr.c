@@ -8,8 +8,7 @@ void push() {
         int item;
         printf("Enter the element to be pushed: ");
         scanf("%d", &item);
-        top++;
-        stack[top] = item;
+        stack[++top] = item;
         printf("Element pushed successfully\n");
     }
 }
@@ -17,8 +16,7 @@ void push() {
 void pop() {
     if(top == -1) printf("Stack is empty(Stack underflow)\n");
     else {
-        printf("Element popped: %d\n", stack[top]);
-        top--;
+        printf("Element popped: %d\n", stack[top--]);
     }
 }
 
