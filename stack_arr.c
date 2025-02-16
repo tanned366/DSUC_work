@@ -51,3 +51,14 @@ int main() {
       - Pop and discard '('.
 4. After reading the expression, pop all remaining operators from the stack and add them to the output.
 5. The output list contains the postfix expression. */
+
+/*Algorithm for Evaluating a Postfix Expression
+1. Initialize an empty stack.
+2. Scan the postfix expression from left to right.
+3. For each token (operand or operator):
+    >> If it is an operand (number), push it onto the stack.
+    >> If it is an operator:
+        * Pop the top two operands from the stack.
+        * Apply the operator to them.
+        * Push the result back onto the stack.
+4. After processing the expression, the final result will be on top of the stack.*/
