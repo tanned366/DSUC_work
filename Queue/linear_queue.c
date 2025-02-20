@@ -26,7 +26,7 @@ void dequeue() {
 int main() {
     int choice;
     do{
-        printf("1. Queue\n2. Dequeue\n3. Exit\n");
+        printf("1. Enqueue\n2. Dequeue\n3. Exit\n");
         printf("Enter your choice: ");
         scanf("%d", &choice);
         switch(choice) {
