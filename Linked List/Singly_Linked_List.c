@@ -73,6 +73,81 @@ struct Node *insert_loc(struct Node *start) {
     return start;
 }
 
+struct Node *del_beg(struct Node *start) {
+    if(start == NULL) printf("\nLinked List is empty");
+    else{
+        struct Node *temp = start;
+        start = start->next;
+        printf("\n%d is deleted", temp->info);
+        free(temp);
+        printList(start);
+    }
+    return start;
+}
+
+struct Node *del_last(struct Node *start) {
+    if(start == NULL) printf("\nLinked List is empty");
+    else{
+        struct Node *temp, *ptemp;
+        temp = start;
+
+        if(start->next == NULL) start = NULL;
+        else{
+            while(temp->next != NULL) {
+                ptemp = temp;
+                temp = temp->next;
+            }
+            ptemp->next = NULL; // deleted last node
+        }
+        printf("%d is deleted", temp->info);
+        free(temp);
+    }
+    return start;
+}
+
+struct Node *del_loc(struct Node *start) {
+    int item;
+    printf("\nEnter the Node data to be deleted: ");
+    scanf("%d", &item);
+
+    struct Node *temp, *ptemp=NULL;
+    temp = start;
+
+    while(temp != NULL) {
+        if(temp->info == item) break;
+        else{
+            ptemp = temp;
+            temp = temp->next;
+        }
+    }
+
+    if(temp == NULL) printf("\nLinked List is empty");
+    else{
+        if(temp == start) start = del_beg(start);
+        else{
+            ptemp->next = temp->next;
+            printf("%d is deleted\n", temp->info);
+            free(temp);
+            printList(start);
+        }
+    }
+    return start;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 int main() {
     int choice;
     do {
