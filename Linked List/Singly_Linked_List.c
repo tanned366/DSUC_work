@@ -99,7 +99,7 @@ struct Node *del_last(struct Node *start) {
             }
             ptemp->next = NULL; // deleted last node
         }
-        printf("%d is deleted", temp->info);
+        printf("%d is deleted\n", temp->info);
         free(temp);
     }
     return start;
@@ -134,19 +134,22 @@ struct Node *del_loc(struct Node *start) {
     return start;
 }
 
+void search(struct Node *start) {
+    int item, pos=1;
+    printf("\nEnter the data to be searched: ");
+    scanf("%d", &item);
+    struct Node *temp = start;
 
-
-
-
-
-
-
-
-
-
-
-
-
+    while (temp != NULL) {
+        if (temp->info == item) {
+            printf("\nNode found at: %d\n", pos);
+            return;
+        }
+        temp = temp->next;
+        pos++;
+    }
+    printf("\nNode Not Found\n");
+}
 
 int main() {
     int choice;
@@ -158,7 +161,11 @@ int main() {
         switch (choice) {
             case 1: start = insert_beg(start); break;
             case 2: start = insert_end(start); break;
-            case 3: start = insert_loc(start); break;
+            case 3: start = insert_loc(start); break; 
+            case 4: start = del_beg(start); break;
+            case 5: start = del_last(start); break;
+            case 6: start = del_loc(start); break;
+            case 7: search(start); break;
             case 8: printList(start); break;
             case 9: break;
             default: printf("\nInvalid Choice\n");
