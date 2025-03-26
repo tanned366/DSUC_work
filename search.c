@@ -57,9 +57,8 @@ void selectionsort(int arr[], int n) {
 
         for(int j=0; j<n; j++){
             if(arr[j]<arr[minIndex])  minIndex = j;
-
             swap(&arr[minIndex], &arr[i]);
-        }
+        }        
     }
 }
 
