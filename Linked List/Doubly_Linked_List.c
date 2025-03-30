@@ -133,6 +133,23 @@ struct Node *del_loc(struct node *start) {
     return start;
 }
 
+struct Node *search(struct Node *start) {
+    int item, pos = 1;
+    printf("\nEnter node data to search: ");
+    scanf("%d", &item);
+    struct Node *temp = start;
+    while (temp != NULL){
+        if (temp->info == item){
+            printf("Node found at %d", pos);
+            return temp;
+        }
+        temp = temp->next;
+        pos++;
+    }
+    printf("Node not found");
+    return NULL;
+}
+
 void main(){
 	int choice;
 	do{
