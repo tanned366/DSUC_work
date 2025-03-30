@@ -113,6 +113,26 @@ struct Node *del_last(struct Node *start) {
     return start;
 }
 
+struct Node *del_loc(struct node *start) {
+    int item;
+	printf("\nEnter the node value to be deleted");
+	scanf("%d",&item);
+	struct Node *temp=start;
+	while(temp!=NULL) {
+		if(item==temp->info) break;
+        else temp=temp->next;
+	}
+    if(temp == NULL) printf("Node not found");
+    else{
+        temp->prev->next = temp->next;
+        temp->next->prev = temp->prev;
+        printf("%d is deleted", temp->info);
+        free(temp);
+        traverse(start); 
+    }
+    return start;
+}
+
 void main(){
 	int choice;
 	do{
