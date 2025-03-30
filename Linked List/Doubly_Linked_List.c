@@ -83,6 +83,36 @@ struct Node *insert_loc(struct Node *start){
     return start;
 }
 
+struct Node *del_beg(struct Node *start){
+	if(start==NULL) printf("\nList is Empty");
+	else{
+		struct Node *temp=start;
+        if(start->next == NULL) start = NULL;
+		else {
+            start=start->next;
+	    	start->prev=NULL;
+        }
+        printf("\n%d is deleted from List",temp->info);
+		free(temp);
+		printList(start);
+	}
+	return start;
+}
+
+struct Node *del_last(struct Node *start) {
+    if(start == NULL) printf("\nList is empty");
+    else{
+        struct Node *temp = start;
+        while(temp->next != NULL) temp = temp->next;
+        if(temp == start) start = NULL;
+        else temp->prev->next = NULL;
+        printf("\n%d is deleted from List",temp->info);
+		free(temp);
+        traverse(start);
+    }
+    return start;
+}
+
 void main(){
 	int choice;
 	do{
