@@ -124,11 +124,15 @@ struct Node *del_loc(struct node *start) {
 	}
     if(temp == NULL) printf("Node not found");
     else{
-        temp->prev->next = temp->next;
-        temp->next->prev = temp->prev;
-        printf("%d is deleted", temp->info);
-        free(temp);
-        traverse(start); 
+        if(start==temp) start=del_beg(start);
+		else if (temp->next==NULL) start=del_last(start);
+        else {
+            temp->prev->next = temp->next;
+            temp->next->prev = temp->prev;
+            printf("%d is deleted", temp->info);
+            free(temp);
+            traverse(start); 
+        }
     }
     return start;
 }
@@ -168,4 +172,4 @@ void main(){
         default: printf("\nInvalid Choice");
 	}
 	}while(choice != 7);
-}
+}       
