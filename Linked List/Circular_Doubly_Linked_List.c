@@ -7,6 +7,14 @@ struct Node {
 };
 struct Node *ptr=NULL;
 
+struct Node *create() {
+	struct Node *New;
+    New = (struct Node*) malloc (sizeof(struct Node));
+    New->next = NULL;
+	New->prev = NULL;
+    return New;
+}
+
 void traverse(struct Node *start)
 {
 	if(start==NULL)
@@ -40,6 +48,58 @@ struct Node *insert_beg(struct Node *start) {
 		start = New;
 	}
 	traverse(start);
+	return start;
+}
+
+struct Node *insert_end (struct Node *start) {
+	struct Node *New;
+	New=(struct Node*)malloc(sizeof(struct Node));
+	printf("\nEnter the data in new Node");
+	scanf("%d",&New->info);
+	if(start == NULL) {
+		start = New;
+		start->next = start;
+		start->prev = start;
+	} else{
+		start->prev->next = New;
+		New->prev = start->prev;
+		New->next = start;
+		start->prev = New;
+	}
+	traverse(start);
+	return start;
+}
+
+struct Node *del_start(struct Node *start) {
+	if(start == NULL) printf("\nList is empty");
+	else{
+		struct Node *temp=start;
+		if(start->next == start) start = NULL;
+		else{
+			start->next->prev = start->prev;
+			start->prev->next = start->next;
+			start = start->next;
+		}
+		printf("\n%d is deleted", temp->info);
+		free(temp);
+		traverse(start);
+	}
+	return start;
+}
+
+struct Node *del_end(struct Node *start) {
+	if(start == NULL) printf("\nList is empty");
+	else{
+		struct Node *temp = start->prev;
+		if (start->next == start) start = NULL;
+		else{
+			temp->prev->next = start;
+			start->prev = temp->prev;
+		}
+		printf("/n%d is deleted", temp->info);
+		free(temp);
+		traverse(start);
+	}
 	return start;
 }
 
